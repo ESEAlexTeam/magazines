@@ -1,21 +1,787 @@
 <!DOCTYPE html>
-<html>
+<html lang="ar" dir="rtl">
 <head>
-  <title>ALEX 2050 مجلة إسكندريه</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>مهندسون من أجل الاستدامة | فرع الإسكندرية</title>
+<meta name="description" content="الصفحة الرسمية لمؤسسة مهندسون من أجل الاستدامة - فرع الإسكندرية: أخبار، فعاليات، أعضاء، مجلة إسكندرية ALEX 2050، ومقالات الأعضاء.">
+
+<!--
+  ملاحظة للمطوّر (لمن سيحرّر هذا الملف):
+  هذا الملف قالب جاهز للنشر، لكنه يحتوي على محتوى نائب (Placeholder) في أقسام:
+  «الأخبار والفعاليات»، «الأعضاء»، «المقالات»، «معرض الصور»، وبيانات التواصل.
+  استبدل أي نص بين أقواس [ ] والروابط # بالمحتوى الحقيقي للمؤسسة قبل النشر.
+  روابط أعداد المجلة (issue1 .. issue7) أُبقيت كما هي كما طُلب.
+-->
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&family=Tajawal:wght@400;500;700&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+
+<style>
+  :root{
+    --ink:#0B2230;
+    --sea-deep:#0A3A52;
+    --sea:#136B82;
+    --gold:#E3A857;
+    --gold-dark:#C98A3B;
+    --sand:#F4ECDC;
+    --sand-dark:#E8DCC4;
+    --leaf:#5E8C6A;
+    --white:#FFFFFF;
+    --max:1180px;
+    --radius:16px;
+    --shadow:0 10px 30px rgba(11,34,48,0.12);
+  }
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--sand);
+    color:var(--ink);
+    font-family:'Tajawal', sans-serif;
+    line-height:1.75;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3{
+    font-family:'Cairo', sans-serif;
+    margin:0;
+    line-height:1.35;
+  }
+  p{margin:0;}
+  a{color:inherit;text-decoration:none;}
+  img,svg{display:block;max-width:100%;}
+  ul{margin:0;padding:0;list-style:none;}
+  button{font-family:inherit;cursor:pointer;border:none;background:none;}
+
+  .ltr{direction:ltr;unicode-bidi:isolate;font-family:'JetBrains Mono', monospace;}
+
+  .container{
+    max-width:var(--max);
+    margin:0 auto;
+    padding:0 24px;
+  }
+
+  .eyebrow{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    font-family:'JetBrains Mono', monospace;
+    font-size:13px;
+    letter-spacing:.5px;
+    color:var(--sea);
+    background:rgba(19,107,130,0.08);
+    padding:6px 14px;
+    border-radius:999px;
+    margin-bottom:14px;
+  }
+  .eyebrow::before{
+    content:"";
+    width:6px;height:6px;border-radius:50%;
+    background:var(--gold);
+  }
+
+  .section{padding-block:88px;}
+  .section-head{max-width:680px;margin-bottom:48px;}
+  .section-head h2{font-size:clamp(28px,3.6vw,38px);font-weight:800;}
+  .section-head p{margin-top:14px;color:#3A5363;font-size:17px;}
+
+  /* ===== Buttons ===== */
+  .btn{
+    display:inline-flex;align-items:center;gap:8px;
+    padding:14px 26px;border-radius:999px;
+    font-weight:700;font-size:15px;
+    transition:transform .2s ease, box-shadow .2s ease, opacity .2s ease;
+  }
+  .btn-primary{background:var(--gold);color:var(--ink);}
+  .btn-primary:hover{transform:translateY(-2px);box-shadow:0 10px 22px rgba(227,168,87,0.4);}
+  .btn-ghost{background:transparent;color:var(--sand);border:1.5px solid rgba(244,236,220,0.45);}
+  .btn-ghost:hover{background:rgba(244,236,220,0.1);}
+  .btn-outline{background:transparent;color:var(--sea);border:1.5px solid var(--sea);}
+  .btn-outline:hover{background:var(--sea);color:var(--white);}
+
+  /* ===== Header ===== */
+  header{
+    position:sticky;top:0;z-index:100;
+    background:rgba(244,236,220,0.85);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid rgba(11,34,48,0.08);
+  }
+  .nav-wrap{
+    display:flex;align-items:center;justify-content:space-between;
+    padding-block:14px;
+  }
+  .brand{display:flex;align-items:center;gap:12px;}
+  .brand-mark{
+    width:44px;height:44px;border-radius:12px;
+    background:linear-gradient(160deg,var(--sea-deep),var(--sea));
+    display:flex;align-items:center;justify-content:center;
+    flex-shrink:0;
+  }
+  .brand-mark svg{width:24px;height:24px;}
+  .brand-text strong{display:block;font-family:'Cairo';font-weight:800;font-size:15.5px;}
+  .brand-text span{display:block;font-size:12px;color:#5A7382;}
+  .brand-text .badge{
+    font-family:'JetBrains Mono';font-size:10.5px;color:var(--gold-dark);
+    letter-spacing:.5px;
+  }
+
+  nav ul{display:flex;gap:6px;align-items:center;}
+  nav a{
+    display:block;padding:10px 14px;border-radius:999px;
+    font-size:14.5px;font-weight:600;color:var(--ink);
+    transition:background .2s ease,color .2s ease;
+  }
+  nav a:hover{background:rgba(19,107,130,0.1);color:var(--sea);}
+  nav .btn-outline{margin-right:4px;}
+
+  .burger{display:none;width:42px;height:42px;border-radius:10px;align-items:center;justify-content:center;}
+  .burger span,.burger span::before,.burger span::after{
+    content:"";display:block;width:20px;height:2px;background:var(--ink);
+    position:relative;transition:transform .25s ease, opacity .25s ease;
+  }
+  .burger span::before{content:"";position:absolute;top:-7px;width:20px;height:2px;background:var(--ink);}
+  .burger span::after{content:"";position:absolute;top:7px;width:20px;height:2px;background:var(--ink);}
+  header.open .burger span{background:transparent;}
+  header.open .burger span::before{transform:translateY(7px) rotate(45deg);}
+  header.open .burger span::after{transform:translateY(-7px) rotate(-45deg);}
+
+  /* ===== Hero ===== */
+  .hero{
+    position:relative;
+    min-height:92vh;
+    display:flex;align-items:center;
+    overflow:hidden;
+    background:radial-gradient(ellipse 120% 80% at 50% -10%, #16566f 0%, var(--sea-deep) 45%, var(--ink) 100%);
+    color:var(--sand);
+  }
+  .stars{
+    position:absolute;inset:0;
+    background-image:
+      radial-gradient(2px 2px at 10% 20%, rgba(244,236,220,.5) 0, transparent 50%),
+      radial-gradient(2px 2px at 80% 15%, rgba(244,236,220,.4) 0, transparent 50%),
+      radial-gradient(1.5px 1.5px at 60% 35%, rgba(244,236,220,.35) 0, transparent 50%),
+      radial-gradient(1.5px 1.5px at 25% 45%, rgba(244,236,220,.3) 0, transparent 50%),
+      radial-gradient(2px 2px at 90% 50%, rgba(244,236,220,.3) 0, transparent 50%);
+    opacity:.8;
+  }
+  .beam-wrap{
+    position:absolute;top:8%;left:50%;transform:translateX(-50%);
+    width:6px;height:6px;
+  }
+  .beam{
+    position:absolute;top:0;left:50%;
+    width:1200px;height:1200px;
+    margin-left:-600px;margin-top:-600px;
+    background:conic-gradient(from 0deg,
+      rgba(227,168,87,0) 0deg,
+      rgba(227,168,87,.22) 8deg,
+      rgba(227,168,87,0) 22deg,
+      rgba(227,168,87,0) 180deg,
+      rgba(227,168,87,.22) 188deg,
+      rgba(227,168,87,0) 202deg,
+      rgba(227,168,87,0) 360deg);
+    animation:sweep 9s linear infinite;
+    pointer-events:none;
+  }
+  @keyframes sweep{to{transform:rotate(360deg);}}
+  .lighthouse-icon{
+    position:absolute;top:-26px;left:50%;transform:translateX(-50%);
+    width:26px;height:64px;
+  }
+  .hero-content{
+    position:relative;z-index:2;
+    padding-top:96px;
+    text-align:center;
+    width:100%;
+  }
+  .hero-content .eyebrow{background:rgba(244,236,220,0.1);color:var(--gold);}
+  .hero-content h1{
+    font-size:clamp(34px,5.4vw,58px);
+    font-weight:800;
+    max-width:880px;margin:18px auto 0;
+  }
+  .hero-content .lead{
+    max-width:620px;margin:22px auto 0;
+    color:#C9D7DD;font-size:17.5px;
+  }
+  .hero-actions{display:flex;gap:14px;justify-content:center;margin-top:34px;flex-wrap:wrap;}
+  .scroll-hint{
+    margin-top:64px;display:flex;flex-direction:column;align-items:center;gap:6px;
+    font-family:'JetBrains Mono';font-size:11px;color:#9FB4BD;
+  }
+  .scroll-hint svg{animation:bob 2s ease-in-out infinite;}
+  @keyframes bob{0%,100%{transform:translateY(0);}50%{transform:translateY(6px);}}
+
+  .skyline{
+    position:absolute;bottom:0;left:0;width:100%;height:22%;
+    z-index:1;
+  }
+
+  /* ===== About ===== */
+  .about-grid{display:grid;grid-template-columns:1.1fr 1fr;gap:56px;align-items:start;}
+  .about-grid p{color:#33505F;font-size:16.5px;}
+  .pillars{display:grid;grid-template-columns:1fr 1fr;gap:18px;}
+  .pillar{
+    background:var(--white);border-radius:var(--radius);
+    padding:22px;box-shadow:var(--shadow);
+  }
+  .pillar .ic{
+    width:42px;height:42px;border-radius:11px;
+    display:flex;align-items:center;justify-content:center;
+    margin-bottom:14px;
+  }
+  .pillar h3{font-size:16px;margin-bottom:6px;}
+  .pillar p{font-size:14px;color:#506976;}
+
+  /* ===== Generic card grids ===== */
+  .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;}
+  .grid-4{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;}
+
+  .card{
+    background:var(--white);border-radius:var(--radius);
+    box-shadow:var(--shadow);overflow:hidden;
+    display:flex;flex-direction:column;
+  }
+
+  /* News */
+  .news-card{padding:22px;}
+  .date-badge{
+    font-family:'JetBrains Mono';font-size:12px;color:var(--sea);
+    background:rgba(19,107,130,0.08);display:inline-block;
+    padding:5px 10px;border-radius:8px;margin-bottom:14px;
+  }
+  .news-card h3{font-size:18px;margin-bottom:10px;}
+  .news-card p{font-size:14.5px;color:#506976;margin-bottom:16px;}
+  .news-card a{font-size:14px;font-weight:700;color:var(--sea-deep);}
+
+  /* Members */
+  .member{padding:24px 16px;text-align:center;}
+  .avatar{
+    width:64px;height:64px;border-radius:50%;
+    margin:0 auto 14px;display:flex;align-items:center;justify-content:center;
+    font-family:'Cairo';font-weight:800;color:var(--white);font-size:18px;
+  }
+  .member h4{font-size:15px;margin-bottom:4px;}
+  .member span{font-size:12.5px;color:#6C828D;}
+
+  /* Magazine */
+  .mag-intro{
+    background:linear-gradient(135deg,var(--sea-deep),var(--sea));
+    color:var(--sand);border-radius:20px;padding:36px;margin-bottom:44px;
+    display:flex;align-items:center;justify-content:space-between;gap:30px;flex-wrap:wrap;
+  }
+  .mag-intro p{max-width:560px;color:#D7E4E8;font-size:16px;}
+  .mag-intro .wordmark{font-family:'JetBrains Mono';font-weight:700;font-size:22px;color:var(--gold);}
+  .mag-shelf{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;}
+  .mag-card{
+    background:linear-gradient(160deg,var(--ink),var(--sea-deep));
+    color:var(--sand);border-radius:var(--radius);
+    padding:24px 18px;display:flex;flex-direction:column;gap:10px;
+    transition:transform .2s ease, box-shadow .2s ease;
+    box-shadow:var(--shadow);
+  }
+  .mag-card:hover{transform:translateY(-6px);}
+  .mag-num{font-family:'JetBrains Mono';font-size:30px;font-weight:700;color:var(--gold);}
+  .mag-title{font-family:'Cairo';font-weight:700;font-size:15.5px;}
+  .mag-sub{font-family:'JetBrains Mono';font-size:11px;color:#9FB4BD;letter-spacing:1px;}
+
+  /* Articles */
+  .article-card{padding:22px;}
+  .article-meta{font-size:12.5px;color:#6C828D;margin-bottom:10px;}
+  .article-card h3{font-size:17px;margin-bottom:10px;}
+  .article-card p{font-size:14.5px;color:#506976;margin-bottom:16px;}
+  .article-card a{font-size:14px;font-weight:700;color:var(--sea-deep);}
+
+  /* Gallery */
+  .gallery-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
+  .gallery-tile{
+    aspect-ratio:4/3;border-radius:var(--radius);
+    display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;
+    color:rgba(244,236,220,0.75);font-size:13px;
+  }
+  .gallery-tile svg{width:30px;height:30px;opacity:.8;}
+  .gallery-tile:nth-child(1){background:linear-gradient(150deg,#0E5C73,#0A3A52);}
+  .gallery-tile:nth-child(2){background:linear-gradient(150deg,#1B7F6B,#0A3A52);}
+  .gallery-tile:nth-child(3){background:linear-gradient(150deg,#16566F,#0B2230);}
+  .gallery-tile:nth-child(4){background:linear-gradient(150deg,#C98A3B,#0A3A52);}
+  .gallery-tile:nth-child(5){background:linear-gradient(150deg,#0A3A52,#13404F);}
+  .gallery-tile:nth-child(6){background:linear-gradient(150deg,#5E8C6A,#0A3A52);}
+
+  /* Contact */
+  .contact-wrap{display:grid;grid-template-columns:1fr 1.2fr;gap:48px;}
+  .contact-info{
+    background:linear-gradient(160deg,var(--ink),var(--sea-deep));
+    color:var(--sand);border-radius:20px;padding:34px;
+  }
+  .contact-info h3{font-size:20px;margin-bottom:18px;}
+  .contact-row{display:flex;align-items:center;gap:12px;margin-bottom:16px;font-size:14.5px;color:#D7E4E8;}
+  .contact-row .ic{
+    width:38px;height:38px;border-radius:10px;background:rgba(244,236,220,0.1);
+    display:flex;align-items:center;justify-content:center;flex-shrink:0;
+  }
+  .social-row{display:flex;gap:10px;margin-top:24px;}
+  .social-row a{
+    width:38px;height:38px;border-radius:10px;background:rgba(244,236,220,0.1);
+    display:flex;align-items:center;justify-content:center;
+    transition:background .2s ease;
+  }
+  .social-row a:hover{background:var(--gold);color:var(--ink);}
+
+  form{background:var(--white);border-radius:20px;padding:34px;box-shadow:var(--shadow);}
+  .form-row{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px;}
+  .field{display:flex;flex-direction:column;gap:6px;}
+  .field.full{grid-column:1/-1;}
+  .field label{font-size:13px;font-weight:700;color:#33505F;}
+  .field input,.field textarea{
+    border:1.5px solid #DCE6E3;border-radius:10px;padding:11px 14px;
+    font-family:inherit;font-size:14.5px;background:#FBFAF7;
+  }
+  .field input:focus,.field textarea:focus{outline:2px solid var(--sea);border-color:var(--sea);}
+  .field textarea{resize:vertical;min-height:96px;}
+  .thanks{
+    display:none;margin-top:16px;background:rgba(94,140,106,0.12);
+    color:var(--leaf);padding:12px 16px;border-radius:10px;font-size:14px;font-weight:700;
+  }
+  .thanks.show{display:block;}
+
+  /* Footer */
+  footer{background:var(--ink);color:#9FB4BD;padding-block:48px;}
+  .footer-wrap{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:20px;}
+  .footer-links{display:flex;gap:18px;flex-wrap:wrap;font-size:14px;}
+  .footer-links a:hover{color:var(--gold);}
+  .footer-tag{font-family:'JetBrains Mono';font-size:12px;color:var(--gold);}
+
+  /* Reveal animation */
+  .reveal{opacity:0;transform:translateY(18px);transition:opacity .6s ease, transform .6s ease;}
+  .reveal.in-view{opacity:1;transform:translateY(0);}
+
+  @media (prefers-reduced-motion: reduce){
+    .beam{animation:none;}
+    .scroll-hint svg{animation:none;}
+    .reveal{transition:none;opacity:1;transform:none;}
+  }
+
+  /* ===== Responsive ===== */
+  @media (max-width:1024px){
+    .grid-4{grid-template-columns:repeat(2,1fr);}
+    .mag-shelf{grid-template-columns:repeat(2,1fr);}
+    .about-grid{grid-template-columns:1fr;}
+    .contact-wrap{grid-template-columns:1fr;}
+  }
+  @media (max-width:760px){
+    nav{
+      position:fixed;inset:64px 0 auto 0;background:var(--sand);
+      padding:18px 24px;border-bottom:1px solid rgba(11,34,48,0.08);
+      transform:translateY(-12px);opacity:0;pointer-events:none;
+      transition:transform .25s ease, opacity .25s ease;
+    }
+    header.open nav{transform:translateY(0);opacity:1;pointer-events:auto;}
+    nav ul{flex-direction:column;align-items:stretch;gap:4px;}
+    nav .btn-outline{margin:8px 0 0;text-align:center;}
+    .burger{display:flex;}
+    .grid-3{grid-template-columns:1fr;}
+    .grid-4{grid-template-columns:1fr 1fr;}
+    .gallery-grid{grid-template-columns:1fr 1fr;}
+    .pillars{grid-template-columns:1fr;}
+    .form-row{grid-template-columns:1fr;}
+    .section{padding-block:64px;}
+  }
+</style>
 </head>
 <body>
 
-<h1>  جميع اعداد  مجلة إسكندرية ALEX 2050 </h1>
+<!-- ===================== Header ===================== -->
+<header id="site-header">
+  <div class="container nav-wrap">
+    <a class="brand" href="#home">
+      <span class="brand-mark">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#F4ECDC" stroke-width="1.8"><path d="M12 2v6M9 8h6l1.6 12.5a1 1 0 0 1-1 1.5H8.4a1 1 0 0 1-1-1.5L9 8Z"/><path d="M6 14h12"/></svg>
+      </span>
+      <span class="brand-text">
+        <strong>مهندسون من أجل الاستدامة</strong>
+        <span>فرع الإسكندرية &nbsp;·&nbsp; <span class="badge ltr">ALEX 2050</span></span>
+      </span>
+    </a>
 
-<p>إسكندرية اللي بنحبها، برؤية مستقبلية بنبنيها. مجلة إسكندرية 2050.. صوت السكندرية نحو التنمية والابتكار والاستدامة.</p>
-<ul>
-  <li><a href="issue1/index.html">العدد الأول</a></li>
-  <li><a href="issue2/index.html">العدد الثاني</a></li>
-  <li><a href="issue3/index.html">العدد الثالث</a></li>
-  <li><a href="issue4/index.html">العدد الرابع</a></li>
-  <li><a href="issue5/index.html">العدد الخامس</a></li>
-  <li><a href="issue6/index.html">العدد السادس</a></li>
-  <li><a href="issue7/index.html">العدد السابع</a></li>
-</ul>
+    <nav>
+      <ul>
+        <li><a href="#home">الرئيسية</a></li>
+        <li><a href="#about">عن المؤسسة</a></li>
+        <li><a href="#news">الأخبار</a></li>
+        <li><a href="#members">الأعضاء</a></li>
+        <li><a href="#magazine">المجلة</a></li>
+        <li><a href="#articles">المقالات</a></li>
+        <li><a href="#gallery">معرض الصور</a></li>
+        <li><a class="btn-outline" href="#contact">تواصل معنا</a></li>
+      </ul>
+    </nav>
+
+    <button class="burger" id="burger" aria-label="فتح القائمة"><span></span></button>
+  </div>
+</header>
+
+<!-- ===================== Hero ===================== -->
+<section class="hero" id="home">
+  <div class="stars" aria-hidden="true"></div>
+  <div class="beam-wrap" aria-hidden="true">
+    <div class="beam"></div>
+    <div class="lighthouse-icon">
+      <svg viewBox="0 0 26 64" fill="none">
+        <polygon points="11,0 15,0 18,18 8,18" fill="#F4ECDC"/>
+        <polygon points="8,18 18,18 21,52 5,52" fill="#E3A857"/>
+        <rect x="2" y="52" width="22" height="8" rx="2" fill="#0B2230"/>
+        <circle cx="13" cy="9" r="3.4" fill="#E3A857"/>
+      </svg>
+    </div>
+  </div>
+
+  <svg class="skyline" viewBox="0 0 1600 220" preserveAspectRatio="none" aria-hidden="true">
+    <path d="M0,180 Q40,168 80,180 T160,180 T240,180 T320,180 T400,180 T480,180 T560,180 T640,180 T720,180 T800,180 T880,180 T960,180 T1040,180 T1120,180 T1200,180 T1280,180 T1360,180 T1440,180 T1520,180 T1600,180 L1600,220 L0,220 Z" fill="rgba(244,236,220,0.07)"/>
+    <g fill="rgba(244,236,220,0.1)" stroke="rgba(244,236,220,0.1)">
+      <!-- Bibliotheca Alexandrina -->
+      <g transform="translate(880,165) rotate(-7)">
+        <ellipse cx="0" cy="0" rx="130" ry="50" fill="none" stroke-width="6"/>
+        <line x1="-130" y1="0" x2="130" y2="0" stroke-width="3"/>
+      </g>
+      <!-- Qaitbay Citadel -->
+      <g transform="translate(1310,118)">
+        <rect x="-72" y="40" width="160" height="55" stroke-width="0"/>
+        <rect x="-72" y="28" width="22" height="12" stroke-width="0"/>
+        <rect x="-30" y="28" width="22" height="12" stroke-width="0"/>
+        <rect x="12" y="28" width="22" height="12" stroke-width="0"/>
+        <rect x="54" y="28" width="22" height="12" stroke-width="0"/>
+        <rect x="-20" y="-26" width="40" height="66" stroke-width="0"/>
+        <circle cx="0" cy="-36" r="13" stroke-width="0"/>
+      </g>
+      <!-- Palm trees -->
+      <g transform="translate(90,140)">
+        <line x1="0" y1="0" x2="0" y2="50" stroke-width="4"/>
+        <path d="M0,0 C-18,-8 -32,-4 -38,4" fill="none" stroke-width="3"/>
+        <path d="M0,0 C18,-8 32,-4 38,4" fill="none" stroke-width="3"/>
+        <path d="M0,0 C-10,-18 -4,-30 4,-36" fill="none" stroke-width="3"/>
+        <path d="M0,0 C10,-18 4,-30 -4,-36" fill="none" stroke-width="3"/>
+      </g>
+      <g transform="translate(1520,150)">
+        <line x1="0" y1="0" x2="0" y2="44" stroke-width="4"/>
+        <path d="M0,0 C-16,-7 -28,-3 -34,4" fill="none" stroke-width="3"/>
+        <path d="M0,0 C16,-7 28,-3 34,4" fill="none" stroke-width="3"/>
+        <path d="M0,0 C-9,-16 -3,-26 4,-32" fill="none" stroke-width="3"/>
+      </g>
+      <!-- Corniche lamp posts -->
+      <g><line x1="250" y1="130" x2="250" y2="178" stroke-width="3"/><circle cx="250" cy="126" r="5" stroke-width="0"/></g>
+      <g><line x1="470" y1="135" x2="470" y2="178" stroke-width="3"/><circle cx="470" cy="131" r="5" stroke-width="0"/></g>
+      <g><line x1="700" y1="135" x2="700" y2="178" stroke-width="3"/><circle cx="700" cy="131" r="5" stroke-width="0"/></g>
+      <g><line x1="1100" y1="135" x2="1100" y2="178" stroke-width="3"/><circle cx="1100" cy="131" r="5" stroke-width="0"/></g>
+      <g><line x1="1450" y1="138" x2="1450" y2="178" stroke-width="3"/><circle cx="1450" cy="134" r="5" stroke-width="0"/></g>
+    </g>
+  </svg>
+
+  <div class="container hero-content">
+    <span class="eyebrow ltr">ALEX 2050</span>
+    <h1>من فنار الإسكندرية… إلى مستقبل مستدام</h1>
+    <p class="lead">مهندسون من أجل الاستدامة - فرع الإسكندرية، نحوّل المعرفة الهندسية إلى مشاريع وأفكار تخدم مدينتنا وتحافظ على مواردها للأجيال القادمة.</p>
+    <div class="hero-actions">
+      <a class="btn btn-primary" href="#contact">انضم إلى المؤسسة</a>
+      <a class="btn btn-ghost" href="#magazine">تصفح مجلة ALEX 2050</a>
+    </div>
+    <div class="scroll-hint">
+      <span>اكتشف المزيد</span>
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#9FB4BD" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== About ===================== -->
+<section class="section" id="about">
+  <div class="container">
+    <div class="about-grid">
+      <div class="reveal">
+        <span class="eyebrow">من نحن</span>
+        <h2 style="margin-bottom:22px;">عن المؤسسة</h2>
+        <p>
+          مهندسون من أجل الاستدامة هي مؤسسة طلابية وشبابية تجمع المهندسين والمهتمين بقطاعات الاستدامة
+          في الإسكندرية، بهدف تسخير المعرفة الهندسية لخدمة قضايا البيئة والطاقة والتنمية العمرانية.
+          من خلال فرعنا في الإسكندرية، ننظّم الفعاليات والورش التدريبية، ونصدر مجلة إسكندرية ALEX 2050
+          التي ترصد رؤيتنا لمدينة أكثر استدامة، إلى جانب نشر مقالات توعوية يكتبها أعضاء المؤسسة بشكل دوري.
+        </p>
+      </div>
+      <div class="pillars reveal">
+        <div class="pillar">
+          <div class="ic" style="background:rgba(94,140,106,0.12);">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#5E8C6A" stroke-width="1.8"><path d="M11 20c-5-1-8-5-8-10 6 0 10 3 10 9"/><path d="M13 20c5-1 8-5 8-10-6 0-10 3-10 9"/></svg>
+          </div>
+          <h3>الاستدامة البيئية</h3>
+          <p>نطوّر مشاريع وأفكار تقلل الأثر البيئي وتحافظ على موارد المدينة.</p>
+        </div>
+        <div class="pillar">
+          <div class="ic" style="background:rgba(227,168,87,0.15);">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#C98A3B" stroke-width="1.8"><path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-3.4 10.9c.5.4.8 1 .8 1.6v.5h5.2v-.5c0-.6.3-1.2.8-1.6A6 6 0 0 0 12 3Z"/></svg>
+          </div>
+          <h3>الابتكار الهندسي</h3>
+          <p>نشجّع الحلول التقنية الجديدة في الطاقة والمياه والبنية التحتية.</p>
+        </div>
+        <div class="pillar">
+          <div class="ic" style="background:rgba(19,107,130,0.12);">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#136B82" stroke-width="1.8"><circle cx="9" cy="8" r="3"/><circle cx="17" cy="9" r="2.4"/><path d="M3 20c0-3.3 2.7-6 6-6s6 2.7 6 6"/><path d="M15 14.5c2.5.3 4.5 2.3 4.8 5"/></svg>
+          </div>
+          <h3>التنمية المجتمعية</h3>
+          <p>نربط المعرفة الهندسية بقضايا المجتمع المحلي ومشاريعه.</p>
+        </div>
+        <div class="pillar">
+          <div class="ic" style="background:rgba(11,34,48,0.08);">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#0B2230" stroke-width="1.8"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20V4H6.5A2.5 2.5 0 0 0 4 6.5v13Z"/><path d="M4 19.5A2.5 2.5 0 0 0 6.5 22H20"/></svg>
+          </div>
+          <h3>التوعية والتعليم</h3>
+          <p>ننشر الوعي بقضايا الاستدامة عبر المجلة والمقالات والفعاليات.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== News & Events ===================== -->
+<section class="section" id="news" style="background:var(--white);">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">آخر الأخبار</span>
+      <h2>الأخبار والفعاليات</h2>
+      <p>تابع آخر فعاليات وورش وأخبار فرع الإسكندرية.</p>
+    </div>
+    <div class="grid-3 reveal">
+      <div class="card news-card">
+        <span class="date-badge ltr">قريبًا</span>
+        <h3>[عنوان الفعالية القادمة]</h3>
+        <p>[نبذة مختصرة عن الفعالية القادمة، التوقيت، والمكان.]</p>
+        <a href="#">التفاصيل والتسجيل ←</a>
+      </div>
+      <div class="card news-card">
+        <span class="date-badge ltr">[التاريخ]</span>
+        <h3>[عنوان الخبر أو الفعالية]</h3>
+        <p>[نبذة مختصرة عن الخبر أو الفعالية التي تمت مؤخرًا.]</p>
+        <a href="#">اقرأ أكثر ←</a>
+      </div>
+      <div class="card news-card">
+        <span class="date-badge ltr">[التاريخ]</span>
+        <h3>[عنوان الخبر أو الفعالية]</h3>
+        <p>[نبذة مختصرة عن الخبر أو الفعالية التي تمت مؤخرًا.]</p>
+        <a href="#">اقرأ أكثر ←</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== Members ===================== -->
+<section class="section" id="members">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">فريقنا</span>
+      <h2>أعضاء المؤسسة</h2>
+      <p>الفريق القائم على تنظيم فعاليات وإصدارات فرع الإسكندرية.</p>
+    </div>
+    <div class="grid-4 reveal">
+      <div class="card member"><div class="avatar" style="background:var(--sea);">[الأ]</div><h4>[اسم العضو]</h4><span>[المنصب في المؤسسة]</span></div>
+      <div class="card member"><div class="avatar" style="background:var(--gold-dark);">[الأ]</div><h4>[اسم العضو]</h4><span>[المنصب في المؤسسة]</span></div>
+      <div class="card member"><div class="avatar" style="background:var(--leaf);">[الأ]</div><h4>[اسم العضو]</h4><span>[المنصب في المؤسسة]</span></div>
+      <div class="card member"><div class="avatar" style="background:var(--ink);">[الأ]</div><h4>[اسم العضو]</h4><span>[المنصب في المؤسسة]</span></div>
+      <div class="card member"><div class="avatar" style="background:var(--sea);">[الأ]</div><h4>[اسم العضو]</h4><span>[المنصب في المؤسسة]</span></div>
+      <div class="card member"><div class="avatar" style="background:var(--gold-dark);">[الأ]</div><h4>[اسم العضو]</h4><span>[المنصب في المؤسسة]</span></div>
+      <div class="card member"><div class="avatar" style="background:var(--leaf);">[الأ]</div><h4>[اسم العضو]</h4><span>[المنصب في المؤسسة]</span></div>
+      <div class="card member"><div class="avatar" style="background:var(--ink);">[الأ]</div><h4>[اسم العضو]</h4><span>[المنصب في المؤسسة]</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== Magazine ===================== -->
+<section class="section" id="magazine" style="background:var(--white);">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">مجلتنا</span>
+      <h2>مجلة إسكندرية <span class="ltr">ALEX 2050</span></h2>
+    </div>
+
+    <div class="mag-intro reveal">
+      <p>إسكندرية اللي بنحبها، برؤية مستقبلية بنبنيها. مجلة إسكندرية 2050.. صوت السكندرية نحو التنمية والابتكار والاستدامة.</p>
+      <span class="wordmark ltr">ALEX 2050</span>
+    </div>
+
+    <div class="mag-shelf reveal">
+      <a class="mag-card" href="issue1/index.html"><span class="mag-num ltr">01</span><span class="mag-title">العدد الأول</span><span class="mag-sub ltr">ALEX 2050</span></a>
+      <a class="mag-card" href="issue2/index.html"><span class="mag-num ltr">02</span><span class="mag-title">العدد الثاني</span><span class="mag-sub ltr">ALEX 2050</span></a>
+      <a class="mag-card" href="issue3/index.html"><span class="mag-num ltr">03</span><span class="mag-title">العدد الثالث</span><span class="mag-sub ltr">ALEX 2050</span></a>
+      <a class="mag-card" href="issue4/index.html"><span class="mag-num ltr">04</span><span class="mag-title">العدد الرابع</span><span class="mag-sub ltr">ALEX 2050</span></a>
+      <a class="mag-card" href="issue5/index.html"><span class="mag-num ltr">05</span><span class="mag-title">العدد الخامس</span><span class="mag-sub ltr">ALEX 2050</span></a>
+      <a class="mag-card" href="issue6/index.html"><span class="mag-num ltr">06</span><span class="mag-title">العدد السادس</span><span class="mag-sub ltr">ALEX 2050</span></a>
+      <a class="mag-card" href="issue7/index.html"><span class="mag-num ltr">07</span><span class="mag-title">العدد السابع</span><span class="mag-sub ltr">ALEX 2050</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== Articles ===================== -->
+<section class="section" id="articles">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">أحدث المحتوى</span>
+      <h2>مقالات الأعضاء</h2>
+      <p>مقالات يومية يكتبها أعضاء المؤسسة حول الاستدامة والابتكار وقضايا مدينتنا.</p>
+    </div>
+    <div class="grid-3 reveal">
+      <div class="card article-card">
+        <div class="article-meta">[اسم الكاتب] · [التاريخ]</div>
+        <h3>[عنوان المقال]</h3>
+        <p>[مقدمة مختصرة عن محتوى المقال تجذب القارئ لمتابعة القراءة.]</p>
+        <a href="#">اقرأ المقال ←</a>
+      </div>
+      <div class="card article-card">
+        <div class="article-meta">[اسم الكاتب] · [التاريخ]</div>
+        <h3>[عنوان المقال]</h3>
+        <p>[مقدمة مختصرة عن محتوى المقال تجذب القارئ لمتابعة القراءة.]</p>
+        <a href="#">اقرأ المقال ←</a>
+      </div>
+      <div class="card article-card">
+        <div class="article-meta">[اسم الكاتب] · [التاريخ]</div>
+        <h3>[عنوان المقال]</h3>
+        <p>[مقدمة مختصرة عن محتوى المقال تجذب القارئ لمتابعة القراءة.]</p>
+        <a href="#">اقرأ المقال ←</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== Gallery ===================== -->
+<section class="section" id="gallery" style="background:var(--white);">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">لقطات من فعالياتنا</span>
+      <h2>معرض الصور</h2>
+      <p>صور من فعاليات وورش فرع الإسكندرية. <span class="ltr" style="font-size:13px;color:#6C828D;">(placeholder)</span></p>
+    </div>
+    <!-- لإضافة صورة حقيقية: استبدل محتوى أي gallery-tile بـ <img src="images/your-photo.jpg" alt="..."> -->
+    <div class="gallery-grid reveal">
+      <div class="gallery-tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="6" width="18" height="13" rx="2"/><circle cx="12" cy="12.5" r="3.2"/><path d="M8 6l1.2-2h5.6L16 6"/></svg><span>أضف صورة الفعالية</span></div>
+      <div class="gallery-tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="6" width="18" height="13" rx="2"/><circle cx="12" cy="12.5" r="3.2"/><path d="M8 6l1.2-2h5.6L16 6"/></svg><span>أضف صورة الفعالية</span></div>
+      <div class="gallery-tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="6" width="18" height="13" rx="2"/><circle cx="12" cy="12.5" r="3.2"/><path d="M8 6l1.2-2h5.6L16 6"/></svg><span>أضف صورة الفعالية</span></div>
+      <div class="gallery-tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="6" width="18" height="13" rx="2"/><circle cx="12" cy="12.5" r="3.2"/><path d="M8 6l1.2-2h5.6L16 6"/></svg><span>أضف صورة الفعالية</span></div>
+      <div class="gallery-tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="6" width="18" height="13" rx="2"/><circle cx="12" cy="12.5" r="3.2"/><path d="M8 6l1.2-2h5.6L16 6"/></svg><span>أضف صورة الفعالية</span></div>
+      <div class="gallery-tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="6" width="18" height="13" rx="2"/><circle cx="12" cy="12.5" r="3.2"/><path d="M8 6l1.2-2h5.6L16 6"/></svg><span>أضف صورة الفعالية</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== Contact ===================== -->
+<section class="section" id="contact">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">كن جزءًا من القصة</span>
+      <h2>تواصل معنا / الاشتراك في المؤسسة</h2>
+      <p>للانضمام إلى فرع الإسكندرية أو الاستفسار عن الفعاليات والمجلة، تواصل معنا عبر البيانات أدناه أو راسلنا مباشرة.</p>
+    </div>
+
+    <div class="contact-wrap reveal">
+      <div class="contact-info">
+        <h3>بيانات التواصل</h3>
+        <div class="contact-row">
+          <span class="ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#F4ECDC" stroke-width="1.8"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M4 7l8 6 8-6"/></svg></span>
+          <span class="ltr">info@yourdomain.com</span>
+        </div>
+        <div class="contact-row">
+          <span class="ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#F4ECDC" stroke-width="1.8"><path d="M5 4h3l2 5-2 1a12 12 0 0 0 6 6l1-2 5 2v3a2 2 0 0 1-2 2c-9 0-15-6-15-15a2 2 0 0 1 2-2Z"/></svg></span>
+          <span class="ltr">+20 1xx xxx xxxx</span>
+        </div>
+        <div class="contact-row">
+          <span class="ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#F4ECDC" stroke-width="1.8"><path d="M12 21s7-6.5 7-12a7 7 0 1 0-14 0c0 5.5 7 12 7 12Z"/><circle cx="12" cy="9" r="2.4"/></svg></span>
+          <span>الإسكندرية، مصر</span>
+        </div>
+
+        <div class="social-row">
+          <a href="#" aria-label="فيسبوك"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#F4ECDC" stroke-width="2"><path d="M15 8.5h2V5h-2c-2 0-3.5 1.5-3.5 3.5V11H9v3h2.5v6H14v-6h2.2l.5-3H14V9c0-.3.3-.5.8-.5Z"/></svg></a>
+          <a href="#" aria-label="انستجرام"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#F4ECDC" stroke-width="1.8"><rect x="3.5" y="3.5" width="17" height="17" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17" cy="7" r="1"/></svg></a>
+          <a href="#" aria-label="لينكدإن"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#F4ECDC" stroke-width="1.8"><rect x="3.5" y="3.5" width="17" height="17" rx="3"/><line x1="8" y1="10" x2="8" y2="16"/><line x1="8" y1="7.2" x2="8" y2="7.3"/><path d="M12 16v-3.5c0-1.3 1-2.3 2.3-2.3s2.2 1 2.2 2.3V16"/></svg></a>
+          <a href="#" aria-label="واتساب"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#F4ECDC" stroke-width="1.8"><path d="M4 20l1.3-4A8 8 0 1 1 9 19.5L4 20Z"/><path d="M9 9.5c.3 2 2.5 4.2 4.5 4.5"/></svg></a>
+        </div>
+      </div>
+
+      <form id="join-form">
+        <div class="form-row">
+          <div class="field">
+            <label for="f-name">الاسم الكامل</label>
+            <input id="f-name" type="text" required placeholder="اكتب اسمك بالكامل">
+          </div>
+          <div class="field">
+            <label for="f-email">البريد الإلكتروني</label>
+            <input id="f-email" type="email" required placeholder="name@example.com">
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="field full">
+            <label for="f-org">الجهة (جامعة / مكان العمل)</label>
+            <input id="f-org" type="text" placeholder="مثال: كلية الهندسة - جامعة الإسكندرية">
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="field full">
+            <label for="f-msg">رسالتك</label>
+            <textarea id="f-msg" placeholder="أخبرنا عن سبب اهتمامك بالانضمام أو استفسارك"></textarea>
+          </div>
+        </div>
+        <button class="btn btn-primary" type="submit" style="width:100%;justify-content:center;">إرسال الطلب</button>
+        <div class="thanks" id="thanks-msg">تم استلام طلبك بنجاح، سنتواصل معك قريبًا. شكرًا لاهتمامك بالانضمام إلينا!</div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== Footer ===================== -->
+<footer>
+  <div class="container footer-wrap">
+    <div>
+      <strong style="color:var(--sand);font-family:'Cairo';">مهندسون من أجل الاستدامة</strong>
+      <div class="footer-tag ltr">ALEX 2050 — فرع الإسكندرية</div>
+    </div>
+    <div class="footer-links">
+      <a href="#about">عن المؤسسة</a>
+      <a href="#magazine">المجلة</a>
+      <a href="#articles">المقالات</a>
+      <a href="#contact">تواصل معنا</a>
+    </div>
+    <div style="font-size:13px;">© 2026 جميع الحقوق محفوظة</div>
+  </div>
+</footer>
+
+<script>
+  // Mobile nav toggle
+  const header = document.getElementById('site-header');
+  const burger = document.getElementById('burger');
+  burger.addEventListener('click', () => header.classList.toggle('open'));
+  document.querySelectorAll('nav a').forEach(a => a.addEventListener('click', () => header.classList.remove('open')));
+
+  // Reveal on scroll
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const revealEls = document.querySelectorAll('.reveal');
+  if (reduceMotion || !('IntersectionObserver' in window)) {
+    revealEls.forEach(el => el.classList.add('in-view'));
+  } else {
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('in-view');
+          io.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+    revealEls.forEach(el => io.observe(el));
+  }
+
+  // Join form (front-end only — connect to a real backend / Google Form / email service before publishing)
+  const joinForm = document.getElementById('join-form');
+  const thanksMsg = document.getElementById('thanks-msg');
+  joinForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    thanksMsg.classList.add('show');
+    joinForm.reset();
+  });
+</script>
+
 </body>
 </html>
